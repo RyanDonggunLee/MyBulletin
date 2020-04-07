@@ -5,6 +5,7 @@
       matInput
       type = "text"
       name = "title"
+      placeholder = "Title"
       ngModel
       required>
       <mat-error *ngIf="postForm.controls['title']?.invalid">Please enter a title.</mat-error>
@@ -14,11 +15,12 @@
       matInput
       rows = "4"
       name = "content"
+      placeholder = "Content"
       ngModel
       required
       #content = "ngModel"></textarea>
       <mat-error *ngIf="content.invalid">Please enter a content.</mat-error>
     </mat-form-field>
-    <button mat-raised-button color='primary' type = "submit">Save Post</button>
+    <button mat-raised-button color='accent' type = "submit">Save Post</button>
   </form>
 </mat-card>
