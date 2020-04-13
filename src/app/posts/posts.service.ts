@@ -15,7 +15,12 @@ export class PostsService {
   }
 
   getPost() {
-   return [...this.posts];
+    this.http.get<{message: string, posts: Post[]}>('http://localhost:3000/api/posts')
+      .subscribe((postData) => {
+        this.posts = postData.posts;
+        this.postUpdated.next([...this.posts]);
+    }
+    )
   }
 
   getPostUpdatedListener() {
@@ -23,7 +28,7 @@ export class PostsService {
   }
 
   addPost(title: string, content: string) {
-    const post = {title: title, content: content};
+    const post = {id: null, title: title, content: content};
     this.posts.push(post);
     this.postUpdated.next([...this.posts]);
   }
